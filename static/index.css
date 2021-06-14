@@ -1,0 +1,54 @@
+body {
+    overflow-x:hidden;
+}
+.Nav {
+background-color: #b0efeb
+}
+.body-bg {
+    background-color: #edffa9;
+}
+
+.headline {
+    margin-top: 50px;
+    margin-left: 820px;
+    font-family: 'Rochester', cursive;
+    font-size: 40px;
+    font-weight: bold;
+    color: #eca3f5;
+}
+
+div a {
+    color: black;
+    font-weight: bold;
+}
+
+tbody {
+    background-color: #fdbaf8;
+}
+
+table {
+    margin-top: 50px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.table-head {
+    background-color: #eca3f5
+}
+
+#task-content {
+    margin-left: 70px;
+    margin-right: 10px;
+    width: 800px;
+    line-height: 2.2;
+}
+
+.no-tasks {
+
+    margin: auto;
+    margin-top: 50px;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    }

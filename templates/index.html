@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="static/index.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rochester&display=swap" rel="stylesheet">
+
+<title>To Do List</title>
+{%  endblock%}
+
+{% block body %}
+<body class="body-bg">
+<div class="Nav">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="static/todo-512.png" alt="Icon" width="40" height="40">
+                To Do List
+            </a>
+        </div>
+    </nav>
+</div>
+<div>
+    <h5 class="headline">To-Do List</h5>
+</div>
+{% if tasks|length < 1 %}
+<h4 class="no-tasks">There are no tasks. Create one below!</h4>
+{% else %}
+<table class="table w-auto">
+    <thead class="table-head">
+    <tr>
+        <th scope="col">Task ID</th>
+        <th scope="col">Task Content</th>
+        <th scope="col">Task Created</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Remove or Return</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+        {% for task in tasks %}
+        <tr>
+            {% if task.remove %}
+            <td><strike>{{ task.id }}</strike></td>
+            <td><strike>{{ task.content }}</strike></td>
+            <td><strike>{{ task.date }}</strike></td>
+            <td><a href="edit/{{ task.id }}">Edit</a></td>
+            <td><a href="return/{{ task.id }}">Return To List</a></td>
+            <td><a href="delete/{{ task.id }}">Delete Permanently</a></td>
+
+            {% else %}
+            <td>{{ task.id }}</td>
+            <td>{{ task.content }}</td>
+            <td>{{ task.date }}</td>
+            <td><a href="edit/{{ task.id }}">Edit</a></td>
+            <td><a href="remove/{{ task.id }}">Check</a></td>
+            <td><a href="delete/{{ task.id }}">Delete Permanently</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+</table>
+
+
+{% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg">
+            <form action="/" method="POST">
+                    <input type="text" name="content" id="task-content">
+                    <input type="submit" class="btn btn-primary" value="Add Task +" id="submit">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+{% endblock %}
